@@ -129,13 +129,7 @@ export default {
     startOrbitPoint() {
       const daysFromAphelion = (Math.abs(new Date() - this.lastAphelionDate) * (1.15741 * (10 ** -8)));
       const stepsFromAphelion = Math.round(daysFromAphelion / this.simulatedDaysPerSecond);
-      const x = stepsFromAphelion > this.stepsInACompleteOrbit ? stepsFromAphelion - this.stepsInACompleteOrbit : stepsFromAphelion;
-      if(this.name === 'Mercury') {
-        console.log('days:',daysFromAphelion);
-        console.log('steps:', stepsFromAphelion, '/', this.stepsInACompleteOrbit);
-        console.log('start', x);
-      }
-      return x;
+      return stepsFromAphelion > this.stepsInACompleteOrbit ? stepsFromAphelion - this.stepsInACompleteOrbit : stepsFromAphelion;
     },
     squaredSpecificAngularMomentum() {
       return (this.aphelionDistance * this.gravitationalParam) / (1 + this.eccentricity);
@@ -162,7 +156,7 @@ export default {
         this.currentOrbitPoint = this.startOrbitPoint;
         firstOrbit = false;
       } else {
-        this.currentOrbitPoint = this.currentOrbitPoint + 1 >= this.stepsInACompleteOrbit ? 1 : this.currentOrbitPoint + 1;
+        this.currentOrbitPoint = this.currentOrbitPoint + 1 >= this.stepsInACompleteOrbit ? 0 : this.currentOrbitPoint + 1;
       }
     }, 1000);
   },

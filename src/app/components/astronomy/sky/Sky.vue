@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="{left: `${leftOffset}vw`}"
+    :style="{left: `${leftOffset}vw`, top: `${topOffset}vh`}"
     class="sky"
   >
     <astronomical-object
@@ -12,12 +12,12 @@
     />
 
     <astronomical-object
-      :size="earthSize"
-      :gravitational-param="2.20329 * (10 ** 13)"
-      :aphelion-distance="50.192 * zoomLevel"
-      :eccentricity="0.205630"
-      :last-aphelion-date="new Date('2020-03-27')"
-      :revolution-period-in-earth-days="87.9691"
+      :size="planets.mercury.size"
+      :gravitational-param=" planets.mercury.standardGravitionalParameter * zoomLevel"
+      :aphelion-distance=" planets.mercury.aphelionDistance * zoomLevel"
+      :eccentricity="planets.mercury.size.eccentricity"
+      :last-aphelion-date="planets.mercury.lastAphelionDate"
+      :revolution-period-in-earth-days="planets.mercury.revolutionPeriodInEarthDays"
       :simulated-days-per-second="simulatedDaysPerSecond"
       color="#b8b4b4"
       name="Mercury"
@@ -25,7 +25,7 @@
 
     <astronomical-object
       :size="earthSize"
-      :gravitational-param="3.248599 * (10 ** 14)"
+      :gravitational-param="3.248599 * (10 ** 14) * zoomLevel"
       :aphelion-distance="78.295 * zoomLevel"
       :eccentricity="0.006772"
       :last-aphelion-date="new Date('2020-07-10')"
@@ -37,7 +37,7 @@
 
     <astronomical-object
       :size="earthSize"
-      :gravitational-param="3.986004418 * (10 ** 14)"
+      :gravitational-param="3.986004418 * (10 ** 14) * zoomLevel"
       :aphelion-distance="109.3 * zoomLevel"
       :eccentricity="0.0167086"
       :last-aphelion-date="new Date('2020-07-04')"
@@ -49,7 +49,7 @@
 
     <astronomical-object
       :size="marsSize"
-      :gravitational-param="4.282837 * (10 ** 13)"
+      :gravitational-param="4.282837 * (10 ** 13) * zoomLevel"
       :aphelion-distance="179.1* zoomLevel"
       :eccentricity="0.0934"
       :last-aphelion-date="new Date('2019-08-26')"
@@ -82,6 +82,7 @@
 
 <script type="text/javascript">
 import AstronomicalObject from '../astronomical-object/AstronomicalObject.vue';
+import planets from '../../../assets/data/planets';
 
 export default {
   name: 'App',
@@ -97,11 +98,18 @@ export default {
       type: Number,
       required: true,
     },
+    topOffset: {
+      type: Number,
+      required: true,
+    },
     simulatedDaysPerSecond: {
       type: Number,
       required: true,
     },
   },
+  data: () => ({
+    planets,
+  }),
   computed: {
     earthSize() {
       return this.zoomLevel / 109.2;

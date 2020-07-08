@@ -3,6 +3,7 @@
     <Sky
       :zoom-level="zoomLevel"
       :left-offset="leftOffset"
+      :top-offset="topOffset"
       :simulated-days-per-second="simulatedDaysPerSecond"
     />
     <DateTracker :simulated-days-per-second="simulatedDaysPerSecond" />
@@ -38,14 +39,17 @@ export default {
   data: () => ({
     zoomLevel: 0.1,
     leftOffset: 0,
+    topOffset: 0,
   }),
   computed: {
-    simulatedDaysPerSecond() { return 87.9691 / 20; },
+    simulatedDaysPerSecond() { return 87.9691 / 10; },
   },
   mounted() {
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowRight') { this.leftOffset += 2 / this.zoomLevel; }
-      if (event.key === 'ArrowLeft') { this.leftOffset -= 2 / this.zoomLevel; }
+      if (event.key === 'ArrowRight') { this.leftOffset -= 2 / this.zoomLevel; }
+      if (event.key === 'ArrowLeft') { this.leftOffset += 2 / this.zoomLevel; }
+      if (event.key === 'ArrowUp') { this.topOffset += 2 / this.zoomLevel; }
+      if (event.key === 'ArrowDown') { this.topOffset -= 2 / this.zoomLevel; }
     });
   },
   methods: {
