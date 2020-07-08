@@ -14,7 +14,7 @@
 
     .zoom-buttons {
         display: flex;
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 0;
         button {
@@ -46,9 +46,7 @@ export default {
       this.stepZoomLevel(newZoomLevel);
     },
     zoomIn() {
-      console.log('moltiplico', this.zoomLevel, 'per 1.1');
-      const newZoomLevel = this.zoomLevel * (1.1);
-      console.log(newZoomLevel);
+      const newZoomLevel = this.zoomLevel * 1.1;
       this.stepZoomLevel(newZoomLevel);
     },
     stepZoomLevel(step) {
