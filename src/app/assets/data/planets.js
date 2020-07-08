@@ -9,6 +9,7 @@ export default {
     lastAphelionDate: new Date('2020-03-27'),
     revolutionPeriodInEarthDays: 87.9691,
   },
+
   venus: {
     name: 'Venus',
     color: '#ce982c',

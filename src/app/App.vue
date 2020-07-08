@@ -42,7 +42,7 @@ export default {
     topOffset: 0,
   }),
   computed: {
-    simulatedDaysPerSecond() { return 87.9691 / 10; },
+    simulatedDaysPerSecond() { return 365.25 / 40; },
   },
   mounted() {
     document.addEventListener('keydown', (event) => {

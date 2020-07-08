@@ -10,10 +10,10 @@
     <planet
       v-for="planet in Object.values(planets)"
       :planet="planet"
+      :key="planet.name"
       :zoom-level="zoomLevel"
       :simulated-days-per-second="simulatedDaysPerSecond"
     />
-
   </div>
 </template>
 
@@ -37,7 +37,6 @@
 </style>
 
 <script type="text/javascript">
-import AstronomicalObject from '../astronomical-object/AstronomicalObject.vue';
 import Sun from '../astronomical-object/sun/Sun.vue';
 import planets from '../../../assets/data/planets';
 import Planet from '../astronomical-object/planet/Planet.vue';
@@ -46,7 +45,6 @@ export default {
   name: 'App',
   components: {
     Planet,
-    AstronomicalObject,
     Sun,
   },
   props: {
@@ -70,10 +68,5 @@ export default {
   data: () => ({
     planets,
   }),
-  computed: {
-    marsSize() {
-      return this.zoomLevel / 205.3;
-    },
-  },
 };
 </script>
