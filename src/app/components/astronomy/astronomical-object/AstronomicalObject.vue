@@ -15,12 +15,10 @@
           {{ name }}
         </p>
         <p
-          v-if="top === undefined"
+          v-if="distance !== null"
           class="distance"
         >
-          ({{ (((orbitPoints[currentOrbitPoint].x ** 2 + orbitPoints[currentOrbitPoint].y ** 2) ** 0.5) *
-            0.1391).toFixed(3) }}
-          × 10<sup>8</sup> km)
+          ({{ distance }} × 10<sup>8</sup> km)
         </p>
       </div>
     </div>
@@ -84,12 +82,8 @@ export default {
       type: String,
       required: true,
     },
-    gravitationalParam: {
-      type: Number,
-      default: null,
-    },
-    eccentricity: {
-      type: Number,
+    distance: {
+      type: String,
       default: null,
     },
   },

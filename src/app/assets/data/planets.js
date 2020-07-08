@@ -2,7 +2,7 @@ export default {
   mercury: {
     name: 'Mercury',
     color: '#b8b4b4',
-    size: 1,
+    size: 285.2,
     standardGravitionalParameter: 2.20329 * (10 ** 13),
     aphelionDistance: 50.192,
     eccentricity: 0.205630,
@@ -13,7 +13,7 @@ export default {
   venus: {
     name: 'Venus',
     color: '#ce982c',
-    size: 1,
+    size: 115,
     standardGravitionalParameter: 3.248599 * (10 ** 14),
     aphelionDistance: 78.295,
     eccentricity: 0.006772,
@@ -39,5 +39,16 @@ export default {
     eccentricity: 0.0934,
     lastAphelionDate: new Date('2019-08-26'),
     revolutionPeriodInEarthDays: 686.971,
+  },
+  jupiter: {
+    name: 'Jupiter',
+    color: '#af9e88',
+    size: 9.946,
+    standardGravitionalParameter: 1.266865349 * (10 ** 17),
+    aphelionDistance: 586.910,
+    eccentricity: 0.0489,
+    // TODO: set right aphelion date
+    lastAphelionDate: new Date(),
+    revolutionPeriodInEarthDays: 4332.59,
   },
 };
