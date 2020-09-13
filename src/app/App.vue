@@ -37,7 +37,7 @@ export default {
     Sky,
   },
   data: () => ({
-    zoomLevel: 0.21,
+    zoomLevel: 0.04,
     leftOffset: 0,
     topOffset: 0,
   }),

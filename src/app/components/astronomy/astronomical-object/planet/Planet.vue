@@ -21,8 +21,9 @@
 <style scoped lang="scss">
   .orbit-point {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: 2px;
+    border-radius: 50%;
+    height: 2px;
   }
 </style>
 
@@ -76,7 +77,7 @@ export default {
           ((this.orbitPoints[this.currentOrbitPoint].x ** 2 + this.orbitPoints[this.currentOrbitPoint].y ** 2) ** 0.5)
                  * (1.391 * (10 ** -2))
         ) / this.zoomLevel
-    ).toFixed(3);
+      ).toFixed(3);
     },
   },
 
